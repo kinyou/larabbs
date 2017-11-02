@@ -11,6 +11,5 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//论坛系统的首页
+Route::get('/','PagesController@root')->name('pages.root');
