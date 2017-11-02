@@ -10,7 +10,7 @@ return [
     | This value is the name of your application. This value is used when the
     | framework needs to place the application's name in a notification or
     | any other location as required by the application or its packages.
-    |
+    | 项目名称
     */
 
     'name' => env('APP_NAME', 'Laravel'),
@@ -49,7 +49,7 @@ return [
     | This URL is used by the console to properly generate URLs when using
     | the Artisan command line tool. You should set this to the root of
     | your application so that it is used when running Artisan tasks.
-    |
+    |  项目域名地址
     */
 
     'url' => env('APP_URL', 'http://larabbs.com'),
@@ -62,7 +62,7 @@ return [
     | Here you may specify the default timezone for your application, which
     | will be used by the PHP date and date-time functions. We have gone
     | ahead and set this to a sensible default for you out of the box.
-    |
+    |  时区:中国上海
     */
 
     'timezone' => 'Asia/Shanghai',
