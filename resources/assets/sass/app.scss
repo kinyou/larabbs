@@ -47,3 +47,19 @@ body {
   }
 }
 
+/*注册码*/
+.register-page {
+  .img-captcha {
+    height: 100%;
+    width: auto;
+    margin: 0;
+  }
+  .group-addon-captcha {
+    padding: 0;
+    overflow: hidden;
+    img {
+      height: 34px;
+    }
+  }
+}
+

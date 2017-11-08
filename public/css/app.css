@@ -8396,3 +8396,20 @@ body {
   color: inherit;
 }
 
+/*注册码*/
+
+.register-page .img-captcha {
+  height: 100%;
+  width: auto;
+  margin: 0;
+}
+
+.register-page .group-addon-captcha {
+  padding: 0;
+  overflow: hidden;
+}
+
+.register-page .group-addon-captcha img {
+  height: 34px;
+}
+
