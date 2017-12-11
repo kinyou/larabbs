@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Handles\ImageUploadHandler;
 use App\Http\Requests\UserRequest;
 use App\Models\User;
 
@@ -14,7 +15,8 @@ class UsersController extends Controller
 	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
 	 */
 	public function show(User $user){
-		return view('users.show',compact('user'));
+		$host = config('app.url');
+		return view('users.show',compact('user','host'));
 	}
 
     /**
@@ -23,11 +25,28 @@ class UsersController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
 	public function edit(User $user){
-        return view('users.edit',compact('user'));
+		$host = config('app.url');
+        return view('users.edit',compact('user','host'));
     }
 
-    public function update(UserRequest $request,User $user){
-        $user->update($request->all());
+	/**
+	 * 更新用户信息
+	 * @param UserRequest $request
+	 * @param ImageUploadHandler $uploadHandler
+	 * @param User $user
+	 * @return \Illuminate\Http\RedirectResponse
+	 */
+    public function update(UserRequest $request,ImageUploadHandler $uploadHandler,User $user){
+		$data = $request->all();
+
+		if ($request->avatar) {
+			$result = $uploadHandler->save($request->avatar,'avatars',$user->id);
+			if ($request){
+				$data['avatar'] = $result['path'];
+			}
+		}
+
+        $user->update($data);
         return redirect()->route('users.show',$user->id)->with('success','个人资料更新成功');
     }
 }
