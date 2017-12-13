@@ -7,6 +7,8 @@
  */
 namespace App\Handles;
 
+use Image;
+
 class ImageUploadHandler{
 	//只允许一下后缀的图片上传
 	protected $allowed_ext = ['png','jpg','gif','jpeg'];
@@ -38,9 +40,39 @@ class ImageUploadHandler{
 		//将图片移动到我们的目标存储路径中
 		$file->move($upload_path,$filename);
 
+		//如果限制了图片的宽度,就进行裁剪
+		if ($max_width && $extension != 'gif') {
+			//等比例缩放
+			$this->reduceSize($upload_path . '/' . $filename, $max_width);
+		}
+
 		return [
 			'path'=>"/$folder_name/$filename"
 		];
 
+	}
+
+	/**
+	 * 对图片进行等比例裁剪
+	 *使用说明:
+	 *        http://image.intervention.io/api/resize
+	 *        http://image.intervention.io/api/save
+	 * @param $filePath
+	 * @param $maxWidth
+	 */
+	private function reduceSize($filePath,$maxWidth){
+		//先实例化,传参是文件的磁盘物理路径
+		$image = Image::make($filePath);
+
+		//进行大小调整的操作
+		$image->resize($maxWidth, null, function ($constraint) {
+			// 设定宽度是 $maxWidth，高度等比例双方缩放
+			$constraint->aspectRatio();
+			// 防止裁图时图片尺寸变大
+			$constraint->upsize();
+		});
+
+		// 对图片修改后进行保存
+		$image->save();
 	}
 }

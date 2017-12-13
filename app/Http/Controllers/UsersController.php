@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Handles\ImageUploadHandler;
 use App\Http\Requests\UserRequest;
 use App\Models\User;
+use Image;
 
 class UsersController extends Controller
 {
@@ -40,7 +41,7 @@ class UsersController extends Controller
 		$data = $request->all();
 
 		if ($request->avatar) {
-			$result = $uploadHandler->save($request->avatar,'avatars',$user->id);
+			$result = $uploadHandler->save($request->avatar,'avatars',$user->id,362);
 			if ($request){
 				$data['avatar'] = $result['path'];
 			}
