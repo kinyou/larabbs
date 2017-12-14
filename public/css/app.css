@@ -8413,3 +8413,14 @@ body {
   height: 34px;
 }
 
+/*用户个人页面*/
+
+.users-show-page .user-info .thumbnail {
+  margin-bottom: 0px;
+}
+
+.users-show-page .user-info .media img {
+  width: 300px;
+  height: 300px;
+}
+
