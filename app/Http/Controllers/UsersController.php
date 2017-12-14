@@ -10,6 +10,13 @@ use Image;
 class UsersController extends Controller
 {
 	/**
+	 * 权限验证-没有登录的用户只能方法show方法
+	 * UsersController constructor.
+	 */
+	public function __construct(){
+		$this->middleware('auth',['except'=>['show']]);
+	}
+	/**
 	 * 个人主页
 	 * 使用laravel的隐形路由模型绑定
 	 * @param User $user
@@ -26,6 +33,8 @@ class UsersController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
 	public function edit(User $user){
+		//权限验证
+		$this->authorize('update',$user);
 		$host = config('app.url');
         return view('users.edit',compact('user','host'));
     }
@@ -38,6 +47,8 @@ class UsersController extends Controller
 	 * @return \Illuminate\Http\RedirectResponse
 	 */
     public function update(UserRequest $request,ImageUploadHandler $uploadHandler,User $user){
+    	//权限验证
+    	$this->authorize('update',$user);
 		$data = $request->all();
 
 		if ($request->avatar) {
