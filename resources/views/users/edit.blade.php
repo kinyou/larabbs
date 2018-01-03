@@ -35,7 +35,7 @@
                         <label for="" class="avatar-label">用户头像</label>
                         <input type="file" name="avatar" />
                         @if($user->avatar)
-                            <img src="{{$host}}{{$user->avatar}}" alt="用户头像" class="thumbnail img-responsive">
+                            <img src="{{$user->avatar}}" alt="用户头像" class="thumbnail img-responsive">
                         @endif
                     </div>
                     <div class="well well-sm">
