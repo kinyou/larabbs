@@ -28,4 +28,42 @@ class Topic extends Model
 		return $this->belongsTo(User::class);
 	}
 
+    /**
+     * 使用本地作用域复用代码,作用域总是返回 查询构建器
+     * @param $query
+     * @param $order
+     * @return mixed
+     */
+	public function scopeWithOrder($query,$order){
+        //不同的排序,读取不同的数据
+        switch($order){
+            case 'recent' :
+                $query->recent();
+                break;
+            default :
+                $query->recentReplied();
+                break;
+        }
+
+        //解决N+1的问题
+        return $query->with(['user','category']);
+    }
+
+    /**
+     * 按照创建时间排序
+     * @param $query
+     * @return mixed
+     */
+    public function scopeRecent($query){
+        return $query->orderBy('created_at','desc');
+    }
+
+    /**
+     * 按照最近回复时间排序
+     * @param $query
+     * @return mixed
+     */
+    public function scopeRecentReplied($query){
+        return $query->orderBy('updated_at','desc');
+    }
 }
