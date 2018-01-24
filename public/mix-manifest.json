@@ -1,4 +1,10 @@
 {
     "/js/app.js": "/js/app.js",
-    "/css/app.css": "/css/app.css"
+    "/css/app.css": "/css/app.css",
+    "/css/simditor.css": "/css/simditor.css",
+    "/resources/assets/js/simditor/module.js": "/resources/assets/js/simditor/module.js",
+    "/resources/assets/js/simditor/hotkeys.js": "/resources/assets/js/simditor/hotkeys.js",
+    "/resources/assets/js/simditor/uploader.js": "/resources/assets/js/simditor/uploader.js",
+    "/resources/assets/js/simditor/simditor.js": "/resources/assets/js/simditor/simditor.js",
+    "/js/editor.js": "/js/editor.js"
 }

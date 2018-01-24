@@ -56,3 +56,18 @@
     </div>
 
 @endsection
+
+@section('styles')
+    <link rel="stylesheet" href="{{asset('css/simditor.css')}}">
+@stop
+
+@section('scripts')
+    <script src="{{asset('js/editor.js')}}"></script>
+    <script>
+        $(document).ready(function(){
+            var editor = new Simditor({
+                textarea: $('#editor'),
+            });
+        });
+    </script>
+@stop

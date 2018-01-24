@@ -14,6 +14,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet"> <!--asset函数用于生成css的url地址-->
+    @yield('styles')
 </head>
 
 <body>
@@ -32,5 +33,6 @@
 
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}"></script>
+@yield('scripts')
 </body>
 </html>
