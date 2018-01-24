@@ -4,6 +4,8 @@
 // Bootstrap
 @import "~bootstrap-sass/assets/stylesheets/bootstrap";
 
+//导入topic_body
+@import "topic_body";
 html {
   position:relative;
   min-height: 100%;

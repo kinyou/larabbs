@@ -11,6 +11,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}"> <!--csrf-token是为了方便前端的javascript脚本获取CSRF令牌-->
 
     <title>@yield('title', 'LaraBBS') - Laravel进阶教程</title>
+    <meta name="description" content="@yield('description', 'LaraBBS 爱好者社区')" />
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet"> <!--asset函数用于生成css的url地址-->
